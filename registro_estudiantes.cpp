@@ -41,3 +41,14 @@ Estudiante* insertar(Estudiante* raiz, int carnet, char nombre[], float nota) {
 
     return raiz;
 }
+
+// 2. Mostrar todos los estudiantes en orden de carnet.
+void mostrarEstudiantes(Estudiante* raiz) {
+    if (raiz != NULL) {
+        mostrarEstudiantes(raiz->izquierdo);
+        cout << "Carnet: " << raiz->carnet
+             << " | Nombre: " << raiz->nombre
+             << " | Nota: " << raiz->nota << endl;
+        mostrarEstudiantes(raiz->derecho);
+    }
+}
