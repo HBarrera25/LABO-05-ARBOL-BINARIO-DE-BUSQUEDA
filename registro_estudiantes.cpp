@@ -72,7 +72,9 @@ void buscarEstudiante(Estudiante* raiz, int carnet) {
 }
 
 // 5. Mostrar estudiantes reprobados (nota < 6.0)
-
+void mostrarReprobados(Estudiante* raiz) {
+    
+}
 
 // 6. Calcular el promedio de todas las notas
 float calcularPromedio(Estudiante* raiz, int* contador) {
@@ -109,3 +111,4 @@ int main() {
 
     return 0;
 }
+
