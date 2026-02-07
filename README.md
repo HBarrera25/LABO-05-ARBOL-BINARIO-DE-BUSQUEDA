@@ -16,7 +16,7 @@ El sistema permite:
 
 1. Clona este repositorio en la máquina local:
    ```bash
-   git clone https://github.com/HBarreras25/LABO-05-ARBOL-BINARIO-DE-BUSQUEDA.git
+   git clone https://github.com/HBarrera25/LABO-05-ARBOL-BINARIO-DE-BUSQUEDA.git
 2. Busca la carpeta del repositorio clonado y escriba esto en la bash:
    ```bash
    code .
