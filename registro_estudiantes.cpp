@@ -71,14 +71,44 @@ void buscarEstudiante(Estudiante* raiz, int carnet) {
     }
 }
 
-// 4. Mostrar estudiantes aprobados (nota >= 6.0)
-void mostrarAprobados(Estudiante* raiz) {
-    if (raiz != NULL) {
-        mostrarAprobados(raiz->izquierdo);
-        if (raiz->nota >= 6.0) {
-            cout << raiz->carnet << " - " << raiz->nombre
-                 << " | Nota: " << raiz->nota << endl;
-        }
-        mostrarAprobados(raiz->derecho);
-    }
+// 5. Mostrar estudiantes reprobados (nota < 6.0)
+void mostrarReprobados(Estudiante* raiz) {
+    
 }
+
+// 6. Calcular el promedio de todas las notas
+float calcularPromedio(Estudiante* raiz, int* contador) {
+    
+}
+
+// 7. Encontrar al estudiante con la nota más alta
+Estudiante* encontrarMejorNota(Estudiante* raiz) {
+    
+}
+
+int main() {
+    Estudiante* sistema = NULL;
+    int opcion;
+
+    do {
+        cout << "\n===== SISTEMA DE GESTION DE ESTUDIANTES =====\n";
+        cout << "1. Agregar estudiante\n";
+        cout << "2. Mostrar todos los estudiantes\n";
+        cout << "3. Buscar estudiante por carnet\n";
+        cout << "4. Mostrar estudiantes aprobados\n";
+        cout << "5. Mostrar estudiantes reprobados\n";
+        cout << "6. Calcular promedio general\n";
+        cout << "7. Mostrar estudiante con mejor nota\n";
+        cout << "8. Salir\n";
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        // Implementa el switch con las opciones
+
+
+
+    } while (opcion != 8);
+
+    return 0;
+}
+
