@@ -52,3 +52,21 @@ void mostrarEstudiantes(Estudiante* raiz) {
         mostrarEstudiantes(raiz->derecho);
     }
 }
+
+// 3. Buscar un estudiante por carnet y mostrar sus datos
+void buscarEstudiante(Estudiante* raiz, int carnet) {
+    if (raiz == NULL) {
+        cout << "Estudiante no encontrado.\n";
+        return;
+    }
+
+    if (carnet == raiz->carnet) {
+        cout << "Carnet: " << raiz->carnet
+             << "\nNombre: " << raiz->nombre
+             << "\nNota: " << raiz->nota << endl;
+    } else if (carnet < raiz->carnet) {
+        buscarEstudiante(raiz->izquierdo, carnet);
+    } else {
+        buscarEstudiante(raiz->derecho, carnet);
+    }
+}
