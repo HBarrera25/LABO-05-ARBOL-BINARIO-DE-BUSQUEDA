@@ -70,3 +70,15 @@ void buscarEstudiante(Estudiante* raiz, int carnet) {
         buscarEstudiante(raiz->derecho, carnet);
     }
 }
+
+// 4. Mostrar estudiantes aprobados (nota >= 6.0)
+void mostrarAprobados(Estudiante* raiz) {
+    if (raiz != NULL) {
+        mostrarAprobados(raiz->izquierdo);
+        if (raiz->nota >= 6.0) {
+            cout << raiz->carnet << " - " << raiz->nombre
+                 << " | Nota: " << raiz->nota << endl;
+        }
+        mostrarAprobados(raiz->derecho);
+    }
+}
