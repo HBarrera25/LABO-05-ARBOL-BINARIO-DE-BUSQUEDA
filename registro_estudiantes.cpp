@@ -89,10 +89,13 @@ void buscarEstudiante(Estudiante *raiz, int carnet)
 }
 
 // 4. Mostrar estudiantes aprobados (nota >= 6.0)
-void mostrarAprobados(Estudiante* raiz) {
-    if (raiz != NULL) {
+void mostrarAprobados(Estudiante *raiz)
+{
+    if (raiz != NULL)
+    {
         mostrarAprobados(raiz->izquierdo);
-        if (raiz->nota >= 6.0) {
+        if (raiz->nota >= 6.0)
+        {
             cout << raiz->carnet << " - " << raiz->nombre
                  << " | Nota: " << raiz->nota << endl;
         }
@@ -101,10 +104,13 @@ void mostrarAprobados(Estudiante* raiz) {
 }
 
 // 5. Mostrar estudiantes reprobados (nota < 6.0)
-void mostrarReprobados(Estudiante* raiz) {
-    if (raiz != NULL) {
+void mostrarReprobados(Estudiante *raiz)
+{
+    if (raiz != NULL)
+    {
         mostrarReprobados(raiz->izquierdo);
-        if (raiz->nota < 6.0) {
+        if (raiz->nota < 6.0)
+        {
             cout << raiz->carnet << " - " << raiz->nombre
                  << " | Nota: " << raiz->nota << endl;
         }
@@ -113,8 +119,10 @@ void mostrarReprobados(Estudiante* raiz) {
 }
 
 // 6. Calcular el promedio de todas las notas
-float calcularPromedio(Estudiante* raiz, int* contador) {
-    if (raiz == NULL) {
+float calcularPromedio(Estudiante *raiz, int *contador)
+{
+    if (raiz == NULL)
+    {
         return 0;
     }
 
@@ -128,30 +136,36 @@ float calcularPromedio(Estudiante* raiz, int* contador) {
 }
 
 // 7. Encontrar al estudiante con la nota más alta
-Estudiante* encontrarMejorNota(Estudiante* raiz) {
-    if (raiz == NULL) {
+Estudiante *encontrarMejorNota(Estudiante *raiz)
+{
+    if (raiz == NULL)
+    {
         return NULL;
     }
 
-    Estudiante* mejor = raiz;
-    Estudiante* izq = encontrarMejorNota(raiz->izquierdo);
-    Estudiante* der = encontrarMejorNota(raiz->derecho);
+    Estudiante *mejor = raiz;
+    Estudiante *izq = encontrarMejorNota(raiz->izquierdo);
+    Estudiante *der = encontrarMejorNota(raiz->derecho);
 
-    if (izq != NULL && izq->nota > mejor->nota) {
+    if (izq != NULL && izq->nota > mejor->nota)
+    {
         mejor = izq;
     }
-    if (der != NULL && der->nota > mejor->nota) {
+    if (der != NULL && der->nota > mejor->nota)
+    {
         mejor = der;
     }
 
     return mejor;
 }
 
-int main() {
-    Estudiante* sistema = NULL;
+int main()
+{
+    Estudiante *sistema = NULL;
     int opcion;
 
-    do {
+    do
+    {
         cout << "\n===== SISTEMA DE GESTION DE ESTUDIANTES =====\n";
         cout << "1. Agregar estudiante\n";
         cout << "2. Mostrar todos los estudiantes\n";
@@ -164,57 +178,66 @@ int main() {
         cout << "Opcion: ";
         cin >> opcion;
 
-        switch (opcion) {
-            case 1: {
-                int carnet;
-                char nombre[50];
-                float nota;
-                cout << "Carnet: ";
-                cin >> carnet;
-                cout << "Nombre: ";
-                cin.ignore();
-                cin.getline(nombre, 50);
-                cout << "Nota: ";
-                cin >> nota;
-                sistema = insertar(sistema, carnet, nombre, nota);
-                break;
+        switch (opcion)
+        {
+        case 1:
+        {
+            int carnet;
+            char nombre[50];
+            float nota;
+            cout << "Carnet: ";
+            cin >> carnet;
+            cout << "Nombre: ";
+            cin.ignore();
+            cin.getline(nombre, 50);
+            cout << "Nota: ";
+            cin >> nota;
+            sistema = insertar(sistema, carnet, nombre, nota);
+            break;
+        }
+        case 2:
+            mostrarEstudiantes(sistema);
+            break;
+        case 3:
+        {
+            int carnet;
+            cout << "Carnet a buscar: ";
+            cin >> carnet;
+            buscarEstudiante(sistema, carnet);
+            break;
+        }
+        case 4:
+            mostrarAprobados(sistema);
+            break;
+        case 5:
+            mostrarReprobados(sistema);
+            break;
+        case 6:
+        {
+            int contador = 0;
+            float suma = calcularPromedio(sistema, &contador);
+            if (contador > 0)
+            {
+                cout << "Promedio general: " << suma / contador << endl;
             }
-            case 2:
-                mostrarEstudiantes(sistema);
-                break;
-            case 3: {
-                int carnet;
-                cout << "Carnet a buscar: ";
-                cin >> carnet;
-                buscarEstudiante(sistema, carnet);
-                break;
+            else
+            {
+                cout << "No hay estudiantes registrados.\n";
             }
-            case 4:
-                mostrarAprobados(sistema);
-                break;
-            case 5:
-                mostrarReprobados(sistema);
-                break;
-            case 6: {
-                int contador = 0;
-                float suma = calcularPromedio(sistema, &contador);
-                if (contador > 0) {
-                    cout << "Promedio general: " << suma / contador << endl;
-                } else {
-                    cout << "No hay estudiantes registrados.\n";
-                }
-                break;
+            break;
+        }
+        case 7:
+        {
+            Estudiante *mejor = encontrarMejorNota(sistema);
+            if (mejor != NULL)
+            {
+                cout << "Mejor estudiante:\n";
+                cout << "Carnet: " << mejor->carnet
+                     << "\nNombre: " << mejor->nombre
+                     << "\nNota: " << mejor->nota << endl;
             }
-            case 7: {
-                Estudiante* mejor = encontrarMejorNota(sistema);
-                if (mejor != NULL) {
-                    cout << "Mejor estudiante:\n";
-                    cout << "Carnet: " << mejor->carnet
-                         << "\nNombre: " << mejor->nombre
-                         << "\nNota: " << mejor->nota << endl;
-                }
-                break;
-            }
+            break;
+        }
         }
 
     } while (opcion != 8);
