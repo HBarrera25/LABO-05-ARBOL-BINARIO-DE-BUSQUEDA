@@ -20,7 +20,7 @@ Estudiante* crearEstudiante(int carnet, char nom[], float nota) {
     int i = 0;
     while (nom[i] != '\0' && i < 49) {
         nuevo->nombre[i] = nom[i];
-        i++;
+        i++;    
     }
     nuevo->nombre[i] = '\0';
 
@@ -73,7 +73,17 @@ void buscarEstudiante(Estudiante* raiz, int carnet) {
 
 // 5. Mostrar estudiantes reprobados (nota < 6.0)
 void mostrarReprobados(Estudiante* raiz) {
-    
+    void mostrarReprobados(Estudiante* raiz) {
+    if (raiz != NULL) {
+        mostrarReprobados(raiz->izquierdo);
+        if (raiz->nota < 6.0) {
+            cout << raiz->carnet << " - " << raiz->nombre
+                 << " | Nota: " << raiz->nota << endl;
+        }
+        mostrarReprobados(raiz->derecho);
+    }
+}
+
 }
 
 // 6. Calcular el promedio de todas las notas
