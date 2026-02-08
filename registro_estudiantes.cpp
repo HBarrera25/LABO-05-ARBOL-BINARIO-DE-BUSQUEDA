@@ -71,9 +71,20 @@ void buscarEstudiante(Estudiante* raiz, int carnet) {
     }
 }
 
+// 4. Mostrar estudiantes aprobados (nota >= 6.0)
+void mostrarAprobados(Estudiante* raiz) {
+    if (raiz != NULL) {
+        mostrarAprobados(raiz->izquierdo);
+        if (raiz->nota >= 6.0) {
+            cout << raiz->carnet << " - " << raiz->nombre
+                 << " | Nota: " << raiz->nota << endl;
+        }
+        mostrarAprobados(raiz->derecho);
+    }
+}
+
 // 5. Mostrar estudiantes reprobados (nota < 6.0)
 void mostrarReprobados(Estudiante* raiz) {
-    void mostrarReprobados(Estudiante* raiz) {
     if (raiz != NULL) {
         mostrarReprobados(raiz->izquierdo);
         if (raiz->nota < 6.0) {
@@ -82,8 +93,6 @@ void mostrarReprobados(Estudiante* raiz) {
         }
         mostrarReprobados(raiz->derecho);
     }
-}
-
 }
 
 // 6. Calcular el promedio de todas las notas
@@ -101,10 +110,8 @@ float calcularPromedio(Estudiante* raiz, int* contador) {
     return suma;
 }
 
-
 // 7. Encontrar al estudiante con la nota más alta
 Estudiante* encontrarMejorNota(Estudiante* raiz) {
-    Estudiante* encontrarMejorNota(Estudiante* raiz) {
     if (raiz == NULL) {
         return NULL;
     }
@@ -121,7 +128,6 @@ Estudiante* encontrarMejorNota(Estudiante* raiz) {
     }
 
     return mejor;
-}
 }
 
 int main() {
@@ -141,7 +147,7 @@ int main() {
         cout << "Opcion: ";
         cin >> opcion;
 
-switch (opcion) {
+        switch (opcion) {
             case 1: {
                 int carnet;
                 char nombre[50];
@@ -182,7 +188,7 @@ switch (opcion) {
                 }
                 break;
             }
-                 case 7: {
+            case 7: {
                 Estudiante* mejor = encontrarMejorNota(sistema);
                 if (mejor != NULL) {
                     cout << "Mejor estudiante:\n";
@@ -198,4 +204,3 @@ switch (opcion) {
 
     return 0;
 }
-
