@@ -170,7 +170,19 @@ witch (opcion) {
             case 4:
                 mostrarAprobados(sistema);
                 break;
-
+            case 5:
+                mostrarReprobados(sistema);
+                break;
+            case 6: {
+                int contador = 0;
+                float suma = calcularPromedio(sistema, &contador);
+                if (contador > 0) {
+                    cout << "Promedio general: " << suma / contador << endl;
+                } else {
+                    cout << "No hay estudiantes registrados.\n";
+                }
+                break;
+            }
     } while (opcion != 8);
 
     return 0;
