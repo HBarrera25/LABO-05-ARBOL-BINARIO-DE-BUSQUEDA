@@ -88,7 +88,7 @@ void mostrarReprobados(Estudiante* raiz) {
 
 // 6. Calcular el promedio de todas las notas
 float calcularPromedio(Estudiante* raiz, int* contador) {
-    f (raiz == NULL) {
+    if (raiz == NULL) {
         return 0;
     }
 
