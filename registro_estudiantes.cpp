@@ -183,6 +183,18 @@ witch (opcion) {
                 }
                 break;
             }
+                 case 7: {
+                Estudiante* mejor = encontrarMejorNota(sistema);
+                if (mejor != NULL) {
+                    cout << "Mejor estudiante:\n";
+                    cout << "Carnet: " << mejor->carnet
+                         << "\nNombre: " << mejor->nombre
+                         << "\nNota: " << mejor->nota << endl;
+                }
+                break;
+            }
+        }
+
     } while (opcion != 8);
 
     return 0;
