@@ -157,7 +157,19 @@ witch (opcion) {
                 sistema = insertar(sistema, carnet, nombre, nota);
                 break;
             }
-
+            case 2:
+                mostrarEstudiantes(sistema);
+                break;
+            case 3: {
+                int carnet;
+                cout << "Carnet a buscar: ";
+                cin >> carnet;
+                buscarEstudiante(sistema, carnet);
+                break;
+            }
+            case 4:
+                mostrarAprobados(sistema);
+                break;
 
     } while (opcion != 8);
 
