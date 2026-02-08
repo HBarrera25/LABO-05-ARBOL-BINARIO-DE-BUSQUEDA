@@ -141,8 +141,7 @@ int main() {
         cout << "Opcion: ";
         cin >> opcion;
 
-        // Implementa el switch con las opciones
-witch (opcion) {
+switch (opcion) {
             case 1: {
                 int carnet;
                 char nombre[50];
