@@ -142,7 +142,21 @@ int main() {
         cin >> opcion;
 
         // Implementa el switch con las opciones
-
+witch (opcion) {
+            case 1: {
+                int carnet;
+                char nombre[50];
+                float nota;
+                cout << "Carnet: ";
+                cin >> carnet;
+                cout << "Nombre: ";
+                cin.ignore();
+                cin.getline(nombre, 50);
+                cout << "Nota: ";
+                cin >> nota;
+                sistema = insertar(sistema, carnet, nombre, nota);
+                break;
+            }
 
 
     } while (opcion != 8);
